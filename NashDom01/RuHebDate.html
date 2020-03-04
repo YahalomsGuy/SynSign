@@ -35,10 +35,8 @@
     <script>
         $(document).ready(function() {
             var hebDate = document.getElementById("heDate").innerText;
-            console.log(hebDate);
             var hebArray = hebDate.split(" ");
             var currDay = hebArray[0].substr(0, hebArray[0].length - 2);
-            console.log(currDay);
             var engMonth = hebArray[2].substr(0, hebArray[2].length - 1);
             var ruMonth = "";
             switch (engMonth) {
@@ -87,9 +85,7 @@
                 default:
                     ruMonth = engMonth;
             }
-            console.log(ruMonth);
             currYear = hebArray[3];
-            console.log(currYear);
             $("#ruDate").html(currDay + " " + ruMonth + ", " + currYear)
         });
     </script>

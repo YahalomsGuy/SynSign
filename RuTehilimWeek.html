@@ -24,7 +24,6 @@
             var Chapters = ["30 - 50", "51 - 72", "73 - 89", "90 - 106", "107 - 119", "120 - 150", "1 - 29"]
             var currDate = new Date();
             var dayOfWeek = currDate.getDay();
-            console.log(dayOfWeek);
             $("#tehChap").html("Главы (неделя): " + Chapters[dayOfWeek - 1]);
         });
     </script>
