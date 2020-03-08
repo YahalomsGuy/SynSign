@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Yahalom Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body>
+    <table width="100%">
+        <tr>
+            <td>
+                <div id="Zmanim"></div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <script>
+        $(document).ready(function() {
+            //https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1
+
+            console.log("Updating Zmanim");
+
+            const RSS_URL = `https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1`;
+            $.ajax(RSS_URL, {
+                accepts: {
+                    xml: "application/rss+xml"
+                },
+
+                dataType: "xml",
+
+                success: function(data) {
+                    $(data)
+                        .find("item")
+                        .each(function() {
+                            const el = $(this);
+
+                            const template = `
+                                                  <article>
+                                                    <img src="${el.find("link").text()}/image/large.png" alt="">
+                                                   <h2>
+                                                     <a href="${el
+                                                       .find("link")
+                                                       .text()}" target="_blank" rel="noopener">
+                                                       ${el.find("title").text()}
+                                                     </a>
+                                                   </h2>
+                                                 </article>
+                                               `;
+
+                            document.body.insertAdjacentHTML("Zmanim", template);
+                        });
+                }
+            });
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
