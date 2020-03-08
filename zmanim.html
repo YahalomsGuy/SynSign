@@ -12,54 +12,39 @@
 
 <body>
 
-    <div id="Zmanim" style="font-size: 50px; color:black; font-weight: bold; text-align: left;">
-        <embed src="https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1">
+    <div id="Zmanim">
+
+        <!--<embed src="https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1"></embed>-->
+
     </div>
+
+
     <script>
-        /*        $(document).ready(function() {
-                                                                                    //https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1
-
-                                                                                    console.log("Updating Zmanim");
-
-                                                                                    const RSS_URL = `https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1`;
-                                                                                    $.ajax(RSS_URL, {
-                                                                                        accepts: {
-                                                                                            xml: "application/rss+xml"
-                                                                                        },
-
-                                                                                        dataType: "xml",
-
-                                                                                        success: function(data) {
-                                                                                            $(data)
-                                                                                                .find("item")
-                                                                                                .each(function() {
-                                                                                                    const el = $(this);
-
-                                                                                                    const template = `
-                                                                                                                          <article>
-                                                                                                                            <img src="${el.find("link").text()}/image/large.png" alt="">
-                                                                                                                           <h2>
-                                                                                                                             <a href="${el
-                                                                                                                               .find("link")
-                                                                                                                               .text()}" target="_blank" rel="noopener">
-                                                                                                                               ${el.find("title").text()}
-                                                                                                                             </a>
-                                                                                                                           </h2>
-                                                                                                                         </article>
-                                                                                                                       `;
-
-                                                                                                    document.body.insertAdjacentHTML("Zmanim", template);
-                                                                                                });
-                                                                                        }
-                                                                                    });
+        //$.getJSON('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1'), function(data) {
+        //    var jsonData = JSON.parse(data.contents);
+        //    console.log(jsonData);
+        //});
 
 
-
-
-
-                                                                                }); 
-                                                                                */
+        $.ajax({
+            type: "POST",
+            url: "https://api.allorigins.win/get?url=https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1",
+            datatype: "xml",
+            success: function(data) {
+                console.log("Success");
+                console.log(data);
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(data, "application/xml");
+                console.log("Type: " + xmlDoc.datatype);
+                console.log("xmlDoc: " + xmlDoc);
+                var xData = xmlDoc.getElementsByTagName("rss");
+                console.log("xData: " + xData);
+                console.log("Length: " + xData.length);
+            }
+        })
     </script>
 </body>
 
 </html>
+
+<!--https://api.allorigins.win/get?url=https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1 -->

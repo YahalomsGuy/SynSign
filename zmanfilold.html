@@ -31,14 +31,15 @@
 
             })
         */
-            /*    $.get("https://yahalomsguy.github.io/SynSign/zmanim.html", function(data) {
+            /*    $.get("", function(data) {
                     console.log(data.);
                 });
             */
+
             $.ajax({
                 type: "GET",
-                url: "https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1",
-                dataType: "html",
+                url: "https://yahalomsguy.github.io/SynSign/zmanim.html",
+                dataType: "jsonp",
                 success: function(data) {
                     console.log(data);
                     jsonData = JSON.parse(data);
