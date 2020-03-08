@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Yahalom Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="Zmanim" style="font-size: 50px; color:black; font-weight: bold; text-align: left;">
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            //https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1
+
+            console.log("Updating Zmanim");
+
+
+
+            /*   $.ajax({
+                url: `https://yahalomsguy.github.io/SynSign/zmanim.html`;
+                data: data,
+                success: success,
+                dataType: "xml",
+
+            })
+        */
+            /*    $.get("https://yahalomsguy.github.io/SynSign/zmanim.html", function(data) {
+                    console.log(data.);
+                });
+            */
+            $.ajax({
+                type: "GET",
+                url: "https://www.chabad.org/tools/rss/zmanim.xml?locationid=347&locationtype=1",
+                dataType: "html",
+                success: function(data) {
+                    console.log(data);
+                    jsonData = JSON.parse(data);
+                    console.log(jsonData[0]);
+                }
+            })
+
+
+        });
+    </script>
+</body>
+
+</html>
