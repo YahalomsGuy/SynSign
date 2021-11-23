@@ -660,13 +660,13 @@
                     r.push(9), r.push(e - 9);
                     break
                 }
-                let t, n = 100;
+                var t, n = 100;
                 for (t = 400; t > e; t -= n) t === n && (n /= 10);
                 r.push(t), e -= t;
             }
             if (1 == r.length) return ea(r[0]) + "׳";
-            let n = "";
-            for (let t = 0; t < r.length; t++) t + 1 === r.length && (n += "״"), n += ea(r[t]);
+            var n = "";
+            for (var t = 0; t < r.length; t++) t + 1 === r.length && (n += "״"), n += ea(r[t]);
             return n
         }
         const na = [
@@ -694,7 +694,7 @@
                 },
                 dayOfYear: function(t) {
                     if (!this.isDate(t)) throw new TypeError("Argument to greg.dayOfYear not a Date");
-                    let e = t.getDate() + 31 * t.getMonth();
+                    var e = t.getDate() + 31 * t.getMonth();
                     return t.getMonth() > 1 && (e -= Math.floor((4 * (t.getMonth() + 1) + 23) / 10), this.isLeapYear(t.getFullYear()) && e++), e
                 },
                 greg2abs: function(t) {
@@ -879,12 +879,12 @@
                 return "number" != typeof this.abs0 && (this.abs0 = Ma.hebrew2abs(this.year, this.month, this.day)), this.abs0
             }
             static hebrew2abs(t, e, r) {
-                let n = r;
+                var n = r;
                 if (e < 7) {
-                    for (let e = 7; e <= Ma.monthsInYear(t); e++) n += Ma.daysInMonth(e, t);
-                    for (let r = 1; r < e; r++) n += Ma.daysInMonth(r, t)
+                    for (var e = 7; e <= Ma.monthsInYear(t); e++) n += Ma.daysInMonth(e, t);
+                    for (var r = 1; r < e; r++) n += Ma.daysInMonth(r, t)
                 } else
-                    for (let r = 7; r < e; r++) n += Ma.daysInMonth(r, t);
+                    for (var r = 7; r < e; r++) n += Ma.daysInMonth(r, t);
                 return da + Ma.elapsedDays(t) + n - 1
             }
             static newYear(t) {
@@ -898,10 +898,10 @@
             static abs2hebrew(t) {
                 if ("number" != typeof t || isNaN(t)) throw new TypeError("invalid parameter to abs2hebrew ".concat(t));
                 t = Math.trunc(t);
-                let e = Math.floor((t - da) / 365.24682220597794);
+                var e = Math.floor((t - da) / 365.24682220597794);
                 for (; Ma.newYear(e) <= t;) ++e;
                 --e;
-                let r = t < Ma.hebrew2abs(e, 1, 1) ? 7 : 1;
+                var r = t < Ma.hebrew2abs(e, 1, 1) ? 7 : 1;
                 for (; t > Ma.hebrew2abs(e, r, Ma.daysInMonth(r, e));) ++r;
                 return {
                     yy: e,
@@ -913,7 +913,7 @@
                 return Ma.getMonthName(this.getMonth(), this.getFullYear())
             }
             render() {
-                let t = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1];
+                var t = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1];
                 const e = (arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null) || ca.getLocaleName(),
                     r = this.getDate(),
                     n = ca.gettext(this.getMonthName(), e),
@@ -965,16 +965,16 @@
                 return new Ma(this.abs() - 1)
             }
             add(t) {
-                let e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "d";
+                var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "d";
                 if (!(t = parseInt(t, 10))) return new Ma(this);
                 if (e = Ma.standardizeUnits(e), e === pa) return new Ma(this.abs() + t);
                 if (e === ga) return new Ma(this.abs() + 7 * t);
                 if (e === ba) return new Ma(this.getDate(), this.getMonth(), this.getFullYear() + t);
                 if (e === ma) {
-                    let e = new Ma(this);
+                    var e = new Ma(this);
                     const r = t > 0 ? 1 : -1;
                     t = Math.abs(t);
-                    for (let n = 0; n < t; n++) e = new Ma(e.abs() + r * e.daysInMonth());
+                    for (var n = 0; n < t; n++) e = new Ma(e.abs() + r * e.daysInMonth());
                     return e
                 }
             }
@@ -983,7 +983,7 @@
                 return wa[e] || la("Invalid units '".concat(t, "'"))
             }
             subtract(t) {
-                let e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "d";
+                var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "d";
                 return this.add(-1 * t, e)
             }
             deltaDays(t) {
