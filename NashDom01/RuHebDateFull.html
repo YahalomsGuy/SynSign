@@ -3,17 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" > <!--  content="IE=edge" -->
     <title>Yahalom Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 
 <body>
-    <!-- <table width="100%">
+    <table width="50%">
         <tr>
-            <td width="45%">
+            <!-- <td width="45%">
                 <div id="heDateHeb" style="font-size: 50px; color: white; font-weight: bold; text-align: left;">
                     <script type=" text/javascript " charset="utf-8 " src="https://www.hebcal.com/etc/hdate-he.js "></script>
                 </div>
@@ -23,7 +23,7 @@
                 <div id="heDate" style="font-size: 0px; color: white; font-weight: bold; text-align: left;">
                     <script type=" text/javascript " charset="utf-8 " src="https://www.hebcal.com/etc/hdate-en.js "></script>
                 </div>
-            </td>
+            </td> -->
 
             <td width="50%">
                 <div id="ruDate" style="font-size: 50px;text-align: left; color: white; font-weight: bold;">
@@ -31,7 +31,7 @@
             </td>
         </tr>
     </table>
-    <br> -->
+    <br>
 <script>
 (function() {
     /*! @hebcal/core v3.29.0 */
@@ -1186,7 +1186,9 @@
     if (dt.getHours() > 19) {
         hd = hd.next();
     }
-    document.write(hd.render('en'));
+    //document.write(hd.render('en'));
+    $("#ruDate").html(hd.render('en'));
+    //$("#ruDate").html(currDay + " " + ruMonth + ", " + currYear)
 })();
 
 
