@@ -656,7 +656,7 @@
         }
 
         function ra(t) {
-            let e = parseInt(t, 10);
+            var e = parseInt(t, 10); //changed from let to var
             if (!e) throw new TypeError("invalid parameter to gematriya ".concat(t));
             const r = [];
             for (e %= 1e3; e > 0;) {
