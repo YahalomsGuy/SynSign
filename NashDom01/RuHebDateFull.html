@@ -11,19 +11,15 @@
 </head>
 
 <body>
-    <table width="50%">
+    <table width="100%">
         <tr>
-            <td width="45%">
+            <td width="50%">
                 <div id="heDateHeb" style="font-size: 50px; color: green; font-weight: bold; text-align: left;">
                    without Strict Mode
                 </div>
 
             </td>
-            <td width="5%">
-                <div id="heDate" style="font-size: 0px; color: white; font-weight: bold; text-align: left;">
-                    <script type=" text/javascript " charset="utf-8 " src="https://www.hebcal.com/etc/hdate-en.js "></script>
-                </div>
-            </td>
+         
 
             <td width="50%">
                 <div id="ruDate" style="font-size: 50px;text-align: left; color: green; font-weight: bold;">
@@ -666,7 +662,7 @@
                 }
                 let t, n = 100;
                 for (t = 400; t > e; t -= n) t === n && (n /= 10);
-                r.push(t), e -= t
+                r.push(t), e -= t;
             }
             if (1 == r.length) return ea(r[0]) + "׳";
             let n = "";
